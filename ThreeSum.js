@@ -8,7 +8,7 @@ var threeSum = function(nums) {
     const sortedNums = nums.slice().sort((a, b) => a - b );
     let triplets = [];
 
-    for(let indexA = 0; indexA < (nums.length-3); indexA++){ //nums.length -3 because the last two elements are positions for b and c
+    for(let indexA = 0; indexA < (nums.length-2); indexA++){ //nums.length -2. The last two elements are positions for b and c
 
       let a = sortedNums[indexA];
 
@@ -33,13 +33,13 @@ var threeSum = function(nums) {
 
         if((a + b + c) <= 0){
           indexB++;
-          if(sortedNums[indexB] === sortedNums[indexB-1]){  //if the b-element is the same as the previous b-element, we don't need to check it again, so we skip to the next
+          while(sortedNums[indexB] === sortedNums[indexB-1]){  //if the b-element is the same as the previous b-element, we don't need to check it again, so we skip to the next
             indexB++;
           }
         }
         else if((a + b + c) >= 0){
           indexC--;
-          if(sortedNums[indexC] === sortedNums[indexC+1]){  //if the c-element is the same as the previous c-element, we don't need to check it again, so we skip to the next
+          while(sortedNums[indexC] === sortedNums[indexC+1]){  //if the c-element is the same as the previous c-element, we don't need to check it again, so we skip to the next
             indexC--;
           }
         }
@@ -52,3 +52,6 @@ var threeSum = function(nums) {
 // console.log(threeSum(arr))
 
 // console.log(threeSum([-1,0,1,2,-1,-4]))
+
+//console.log(threeSum([0,0,0]))
+console.log(threeSum([-4,-2,-2,-2,0,1,2,2,2,3,3,4,4,6,6]))
